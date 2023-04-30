@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+          https://www.springframework.org/schema/context/spring-context.xsd">
+<!--<context:annotation-config />-->
+
+    <bean id="student" class="com.example.springframework.Beginner.Student">
+        <property name="studentId" value="1" />
+        <property name="studentName" value="badsna" />
+        <property name="studentAddress" value="Nepal" />
+    </bean>
+
+
+<!--    if one propety gets missing value will be set to null-->
+    <bean id="student1" class="com.example.springframework.Beginner.ForRequiredStudent">
+        <property name="age" value="1" />
+<!--        <property name="name" value="badsna" />-->
+
+    </bean>
+
+    <context:annotation-config/>
+
+
+</beans>

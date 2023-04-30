@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <context:annotation-config />
+
+<!--    yesma auto wire garna mildaina cause 2 ota proprty kaii value xa-->
+<bean class="com.example.springframework.Autowiring.Address" name="address">
+    <property name="street" value="nala" />
+    <property name="city" value="benepa" />
+</bean>
+<!--    yesma chai garne chai yesma chai Address ko object chaiyako xa-->
+<!--    byName  ley Emp ma chaine object ko name linxa and tao name  bean sanga match garyaraw object inject garxa-->
+<!--    type ma dataType check garxa,
+        construtor ley paramterized constructor call garxa
+-->
+<bean class="com.example.springframework.Autowiring.Emp" name="emp"  autowire="byName">
+
+</bean>
+
+
+
+
+</beans>

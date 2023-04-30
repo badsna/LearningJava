@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+         https://www.springframework.org/schema/context/spring-context.xsd
+          http://www.springframework.org/schema/aop
+          https://www.springframework.org/schema/aop/spring-aop.xsd">
+    <context:annotation-config />
+    <aop:aspectj-autoproxy />
+
+   <bean name="triangle" class="com.example.springframework.ForAspect.model.Triangle">
+       <property name="name" value="Triangle name" />
+   </bean>
+
+    <bean name="circle" class="com.example.springframework.ForAspect.model.Circle">
+        <property name="name" value="Circle name" />
+    </bean>
+
+<!--    We need to wire triangle with shapeService and circle  byName-->
+    <bean name="shapeService" class="com.example.springframework.ForAspect.Service.ShapeService" autowire="byName" />
+
+    <bean name="loggingAspect" class="com.example.springframework.ForAspect.aspect.LoggingAspect" />
+    <aop:config>
+<!--        //it will have all the aspect configuration -->
+<!--        this line will work as @Aspect-->
+        <aop:aspect id="loggingAspect" ref="loggingAspect" >
+            <aop:pointcut id="allGetters" expression="execution(* get*())"/>
+            <aop:around pointcut-ref="allGetters" method="myAroundAdvices" />
+        </aop:aspect>
+
+    </aop:config>
+
+</beans>
